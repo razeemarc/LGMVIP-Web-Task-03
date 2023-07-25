@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+mport React, { useState } from 'react';
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +9,8 @@ const RegistrationForm = () => {
     gender: '',
     skills: [],
   });
+
+  const [enrolledStudents, setEnrolledStudents] = useState([]); 
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -34,17 +36,8 @@ const RegistrationForm = () => {
     event.preventDefault();
     console.log('Form data:', formData);
 
-    setFormData({
-      name: '',
-      email: '',
-      website: '',
-      imageLink: '',
-      gender: '',
-      skills: [],
-    });
-  };
+    setEnrolledStudents([...enrolledStudents, formData]); 
 
-  const handleClear = () => {
     setFormData({
       name: '',
       email: '',
@@ -149,62 +142,61 @@ const RegistrationForm = () => {
               SQL
               <input
                 type="checkbox"
-                name="nodejs"
-                checked={formData.skills.includes('Nodejs')}
+                name="Java"
+                checked={formData.skills.includes('Java')}
                 onChange={handleCheckboxChange}
               />
-              Node.js
+              Java
             </label></div>
             <br />
             <br/>
           
-            <button className='blue-button' type="submit">Enroll students</button>
+            <button className='blue-button'  type="submit">Enroll students</button>
 
-            <button  className='red-button' type="button" onClick={handleClear}>
-              Clear
-            </button>
+           
           </form>
         </div>
+        {enrolledStudents.map((student, index) => (
 
-        <div style={{ flex: 1 }}>
+        <div key={index} style={{ flex: 1 }}>
+          
+          
           <h2> Enrolled students</h2>
-          <table className='table-style'>
+
+          <table  className='table-style'>
             <thead>
               <tr>
-                <th className='first-column'>Description</th>
+                <th key={index}className='first-column'>Description</th>
                 <th>Image</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className='first-column'>
-                {formData.name}<br/>
-                {formData.email}<br/>
-                {formData.website}<br/>
-                {formData.gender} <br/>
-                {formData.skills.join(', ')}<br/></td>
+                <tr >
+                  <td className='first-column'>
+                    {student.name}<br />
+                    {student.email}<br />
+                    {student.website}<br />
+                    {student.gender} <br />
+                    {student.skills.join(', ')}<br />
+                  </td>
+                  <td rowSpan={5}>
+                    {student.imageLink && (
+                      <img
+                        src={student.imageLink}
+                        alt="Profile"
+                        style={{ width: '200px', height: '200px', objectFit: 'cover' }}
+                      />
+                    )}
+                  </td>
+                </tr>
               
-               
-               
-                <td rowSpan={5}> 
-                {formData.imageLink && (
-           
-              <img
-                src={formData.imageLink}
-                alt="Profile"
-                style={{ width: '200px', height: '200px', objectFit: 'cover' }}
-              />
-              
-           
-          )}</td>
-           </tr>
-         
-             
             </tbody>
           </table>
-
+      
         </div>
+        ))}
       </div>
+    
     </div>
   );
 };
