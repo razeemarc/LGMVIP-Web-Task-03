@@ -1,0 +1,84 @@
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  padding: 10px; 
+}
+
+th,
+td {
+  padding: 10px; 
+  border: 1px solid #ccc;
+} 
+.heading {
+  color: rgb(17, 36, 88);
+  text-align: center; 
+  font-family: Arial, sans-serif; 
+}
+.form{
+  padding: 5%;
+}
+hr{
+  color: blue;
+  padding-right: 30px;
+  border: #050505;
+}
+.reg-form {
+  flex: 1;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 40px;
+  box-sizing: border-box;
+}
+
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.blue-button {
+  background-color: #2196f3; 
+  color: white;
+ 
+  
+}
+.blue-button:hover{
+  background-color: #2195f3a2;
+  color:black;
+ 
+}
+
+.red-button {
+  background-color: #f44336; 
+  color: white;
+}
+.red-button:hover{
+  background-color: #f44336ad;
+  color:black;
+}
+.blue-button + .red-button {
+  margin-left: 50px;
+}
+.website span{
+  padding-right: 18px;
+}
+span{
+  padding-right: 27px;
+}
+.email span{
+  padding-right: 30px;
+}
+.skills span{
+padding-right: 30px;
+}
+.gender span{
+  padding-right: 18px;
+}
+.first-column{
+  padding-left: 30px;
+}
